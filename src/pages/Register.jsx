@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import GoogleLogin from '../components/GoogleLogin'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import { updateProfile } from 'firebase/auth'
+import toast from 'react-hot-toast'
 
 const Register = () => {
 
     const {register} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -27,17 +29,22 @@ const Register = () => {
         register(email,password)
         .then(data =>{
             console.log(data.user)
-
+            if(data.user.email){
+                toast.success("Register Successfully")
+            }
+             navigate('/')
             updateProfile(data.user,{
                 displayName: fName,
-                photoURL: photo || "https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-1-1179329.png?f=webp"
+                photoURL: photo || 'https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-1-1179329.png?f=webp'
             })
-            .then((data)=>{
-                console.log("user updated")
+            .then(()=>{
+                    toast.success("User Updated Successfully")
+
             })
         })
         .catch((error)=>{
             console.log(error)
+            toast.error(error.message)
         })
     }
   return (

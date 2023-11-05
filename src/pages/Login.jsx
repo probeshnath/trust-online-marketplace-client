@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import GoogleLogin from '../components/GoogleLogin'
 import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Login = () => {
 
     const {login} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -20,9 +22,14 @@ const Login = () => {
         login(email,password)
         .then(data =>{
             console.log(data.user)
+            if(data.user.email){
+                toast.success("Login Successfully")
+            }
+            navigate("/")
         })
         .catch((error)=>{
             console.log(error)
+            toast.error(error.message)
         })
     }
 
