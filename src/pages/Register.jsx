@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GoogleLogin from '../components/GoogleLogin'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
+import { updateProfile } from 'firebase/auth'
 
 const Register = () => {
 
@@ -26,6 +27,14 @@ const Register = () => {
         register(email,password)
         .then(data =>{
             console.log(data.user)
+
+            updateProfile(data.user,{
+                displayName: fName,
+                photoURL: photo || "https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-1-1179329.png?f=webp"
+            })
+            .then((data)=>{
+                console.log("user updated")
+            })
         })
         .catch((error)=>{
             console.log(error)
