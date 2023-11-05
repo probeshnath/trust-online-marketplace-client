@@ -8,7 +8,7 @@ const Login = () => {
             <div className="hero min-h-screen max-w-7xl mx-auto ">
                 <div className="flex justify-between  items-center ">
                     <div className="text-center hidden md:block w-full flex-1 lg:text-left">
-                        <iframe className='' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
+                        <iframe style={{ width: '100%' }} className='w-full' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
                     </div>
                     <div className="card flex-shrink-0 w-full flex-1  shadow-2xl bg-base-100">
                         <form className="card-body">
@@ -17,15 +17,11 @@ const Login = () => {
                                 <h3 className='text-2xl font-semibold'>Welcome Back</h3>
                             </div>
                             <div className="form-control">
-                                {/* <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label> */}
+                                
                                 <input type="email" placeholder="Email" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
                             </div>
                             <div className="form-control">
-                                {/* <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label> */}
+                                
                                 <input type="password" placeholder="password" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
