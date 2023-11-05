@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import GoogleLogin from '../components/GoogleLogin'
 
 const Login = () => {
     return (
@@ -29,10 +31,13 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control pb-2 mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
+
+                        <p className='text-gray-500'>Don't have an account <Link className='text-blue-700 font-bold' to="/register">Register</Link> </p>
                         </form>
+                        <GoogleLogin />
                     </div>
                 </div>
             </div>
