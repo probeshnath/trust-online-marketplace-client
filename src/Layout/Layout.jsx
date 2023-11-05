@@ -1,5 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 
+
 const Layout = ({ children }) => {
 
     const links = <>
@@ -51,6 +52,7 @@ const Layout = ({ children }) => {
                         {links}
                     </ul>
                 </div>
+                
             </div>
         </div>
     )
