@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { AuthContext } from '../provider/AuthProvider'
 
 
 const Layout = ({ children }) => {
+
+    const {user,logout} = useContext(AuthContext);
 
     const links = <>
 
@@ -10,7 +14,9 @@ const Layout = ({ children }) => {
         <li><NavLink to="/my-posted-jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My posted jobs </NavLink></li>
         <li><NavLink to="/my-bits" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My Bids </NavLink></li>
         <li><NavLink to="/bid-requests" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Bid Requests </NavLink></li>
-        <li><NavLink to="/login" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Login </NavLink></li>
+       { user ? <div>
+            <button onClick={()=> logout()}>Logout</button>
+       </div> : <li><NavLink to="/login" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Login </NavLink></li> }
 
     </>
 
