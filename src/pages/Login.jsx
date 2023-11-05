@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import GoogleLogin from '../components/GoogleLogin'
+import { AuthContext } from '../provider/AuthProvider'
 
 const Login = () => {
 
-   
+    const {login} = useContext(AuthContext)
+
+    const handleLogin = (e) =>{
+        e.preventDefault();
+
+        const form = e.target;
+       
+        const email = form.email.value;
+        const password = form.password.value;
+
+       
+        // console.log("user",user)
+        login(email,password)
+        .then(data =>{
+            console.log(data.user)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
 
     return (
         <div className='bg-base-200'>
@@ -14,18 +34,18 @@ const Login = () => {
                         <iframe style={{ width: '100%' }} className='w-full' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
                     </div>
                     <div className="card flex-shrink-0 w-full flex-1  shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form onSubmit={handleLogin} className="card-body">
                             <div className='mx-auto text-center py-5'>
                                 <img className='w-10 mx-auto' src="https://i.ibb.co/Lt7yWYT/png-transparent-computer-icons-user-profile-user-account-avatar-heroes-silhouette-black-thumbnail-re.png" alt="" />
                                 <h3 className='text-2xl font-semibold'>Welcome Back</h3>
                             </div>
                             <div className="form-control">
                                 
-                                <input type="email" placeholder="Email" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
+                                <input type="email" name='email' placeholder="Email" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
                             </div>
                             <div className="form-control">
                                 
-                                <input type="password" placeholder="password" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
+                                <input type="password" name='password' placeholder="password" className="text-black font-medium placeholder:text-black placeholder:font-semibold outline-none py-2 px-1 border-b-2 " required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
