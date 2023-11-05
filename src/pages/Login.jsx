@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import GoogleLogin from '../components/GoogleLogin'
 
 const Login = () => {
+
+   
+
     return (
         <div className='bg-base-200'>
             <div className="hero min-h-screen max-w-7xl mx-auto ">
