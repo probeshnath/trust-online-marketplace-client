@@ -24,7 +24,9 @@ const JobDetails = () => {
             price,
             deadline,
             seller_email,
-            buyer_email
+            buyer_email,
+            job_title: job.j_title,
+            description: job.description
         }
         // console.log(bidProject)
 
