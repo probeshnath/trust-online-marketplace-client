@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import Carusal from '../components/Carusal'
-import { AuthContext } from '../provider/AuthProvider'
+import BrowseJobsByCategory from '../components/BrowseJobsByCategory'
 
 const Home = () => {
-  // const {name} = useContext(AuthContext)
+ 
   console.log(name)
   return (
     <div>
       <Carusal />
+      <BrowseJobsByCategory />
     </div>
   )
 }
