@@ -23,10 +23,7 @@ const Layout = ({ children }) => {
         <li><NavLink to="/add_jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Add job </NavLink></li>
         <li><NavLink to="/mypostedjobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My posted jobs </NavLink></li>
         <li><NavLink to="/mybids" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My Bids </NavLink></li>
-        <li><NavLink to="/bid-requests" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Bid Requests </NavLink></li>
-
-
-        
+        <li><NavLink to="/bidrequests" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Bid Requests </NavLink></li>   
     </>
 
     const companyName = <Link to="/" className='flex justify-center gap-2 items-center' > <img className='w-[50px] h-[50px]' src="https://i.ibb.co/KKYjfWt/pngtree-green-hand-logo-designs-png-image-4157971-removebg-preview1.png" alt="" /> <h2 className='text-3xl text-green-600 font-bold'> Nimpata</h2> </Link>
