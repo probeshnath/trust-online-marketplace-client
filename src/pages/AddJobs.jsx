@@ -37,7 +37,7 @@ const AddJobs = () => {
             console.log(res.data)
             if(res.data.insertedId){
                 toast.success("Job Created Successfully")
-                navigate("/my-posted-jobs")
+                navigate("/mypostedjobs")
             }
         })
         .catch(error =>{
@@ -50,10 +50,10 @@ const AddJobs = () => {
         <div className='max-w-7xl mx-auto flex justify-center items-center h-screen'>
             <div className='shadow-lg md:w-1/3'>
                 <div className='py-10 px-3'>
-                    <img src="" alt="" />
-                    <h3 className='text-3xl text-center pb-5 font-bold '>  <span className='text-green-600 capitalize'>{user.displayName}</span>,<br /> <span className='text-orange-500'>Create a New Job</span></h3>
+                    {/* <img src="" alt="" /> */}
+                    <h3 className='text-3xl text-center pb-5 font-bold '>  <span className='text-green-600 capitalize'>{user?.displayName}</span>,<br /> <span className='text-orange-500'>Create a New Job</span></h3>
                     <form onSubmit={createJobs} className='flex gap-3 flex-col'>
-                        <input type="Email" placeholder='Email' name='email' defaultValue={user.email} readOnly className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' />
+                        <input type="Email" placeholder='Email' name='email' defaultValue={user?.email} readOnly className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' />
                         <input type="text" placeholder='Job Title' name='j_title' className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' required />
                         <input type="date" placeholder='Deadline' name='deadline' className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' required />
                         <textarea name="description" placeholder='Job Description..' className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' required ></textarea>

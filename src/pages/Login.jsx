@@ -32,13 +32,13 @@ const Login = () => {
             toast.error(error.message)
         })
     }
-
+    // return    <iframe style={{ width: '500px' }} className='w-[500px]' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
     return (
         <div className='bg-base-200'>
             <div className="hero min-h-screen max-w-7xl mx-auto ">
                 <div className="flex justify-between  items-center ">
                     <div className="text-center hidden md:block w-full flex-1 lg:text-left">
-                        <iframe style={{ width: '100%' }} className='w-full' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
+                        <iframe style={{ width: '500px' }} className='w-[500px]' src="https://lottie.host/?file=eb28818d-7c5c-4f6c-91b5-68fde2f5427a/fGOIemb1Ik.json"></iframe>
                     </div>
                     <div className="card flex-shrink-0 w-full flex-1  shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">

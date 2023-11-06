@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const MyPostedSingleJob = ({job}) => {
     const {_id,category,deadline,description,email,j_title,max_price,min_price} = job;
@@ -16,7 +17,7 @@ const MyPostedSingleJob = ({job}) => {
                         <p>${min_price}-${max_price}</p>
                     </div>
                     <div className="card-actions justify-end">
-                        <div className="badge badge-outline">Update</div>
+                        <Link to={`/update/${_id}`} ><div className="badge badge-outline">Update</div></Link>
                         <div className="badge badge-outline">Delete</div>
                     </div>
                 </div>

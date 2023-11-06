@@ -32,7 +32,7 @@ const Register = () => {
             if(data.user.email){
                 toast.success("Register Successfully")
             }
-             navigate('/')
+             
             updateProfile(data.user,{
                 displayName: fName,
                 photoURL: photo || 'https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-1-1179329.png?f=webp'
@@ -41,6 +41,7 @@ const Register = () => {
                     toast.success("User Updated Successfully")
 
             })
+            navigate('/')
         })
         .catch((error)=>{
             console.log(error)

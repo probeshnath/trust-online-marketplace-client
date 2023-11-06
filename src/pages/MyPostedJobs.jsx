@@ -25,7 +25,7 @@ const MyPostedJobs = () => {
         <div className="max-w-7xl py-10 mx-auto">
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 px-2'>
                 {
-                    myPostedJobs.map((job)=>(
+                    myPostedJobs?.map((job)=>(
                         <MyPostedSingleJob key={job._id} job={job} />
                     ))
                 }

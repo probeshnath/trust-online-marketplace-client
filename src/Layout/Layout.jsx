@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { NavLink, Link, useNavigate, Outlet } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import toast from 'react-hot-toast';
 import {LiaTimesSolid} from 'react-icons/lia'
@@ -21,14 +21,12 @@ const Layout = ({ children }) => {
 
         <li><NavLink to="/" className={({ isActive }) => isActive ? "text-green-400 text-center font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Home </NavLink></li>
         <li><NavLink to="/add_jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Add job </NavLink></li>
-        <li><NavLink to="/my-posted-jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My posted jobs </NavLink></li>
-        <li><NavLink to="/my-bits" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My Bids </NavLink></li>
+        <li><NavLink to="/mypostedjobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My posted jobs </NavLink></li>
+        <li><NavLink to="/mybits" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My Bids </NavLink></li>
         <li><NavLink to="/bid-requests" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Bid Requests </NavLink></li>
 
 
-        {/* {user && <li>
-            
-        </li> } */}
+        
     </>
 
     const companyName = <Link to="/" className='flex justify-center gap-2 items-center' > <img className='w-[50px] h-[50px]' src="https://i.ibb.co/KKYjfWt/pngtree-green-hand-logo-designs-png-image-4157971-removebg-preview1.png" alt="" /> <h2 className='text-3xl text-green-600 font-bold'> Nimpata</h2> </Link>
@@ -57,16 +55,16 @@ const Layout = ({ children }) => {
                                     {links}
                                     {user ? <div>
 
-                                        <img onClick={() => setOpen(!open)} className='w-10 h-10 cursor-pointer rounded-full' src={user.photoURL} alt={user.displayName} />
+                                        <img onClick={() => setOpen(!open)} className='w-10 h-10 cursor-pointer rounded-full' src={user?.photoURL} alt={user?.displayName} />
 
 
                                     </div> : <li><NavLink to="/login" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Login </NavLink></li>}
                                     {open &&
                                         <div className='bg-green-200 py-4 px-3 w-[200px] rounded-md text-center  absolute -bottom-[200px] z-50 right-0'>
                                             <LiaTimesSolid className='text-red-400 font-bold cursor-pointer' onClick={() =>setOpen(!open)} />
-                                            <img className='w-10 h-10 cursor-pointer mx-auto rounded-full' src={user.photoURL} alt={user.displayName} />
-                                            <h2 className='text-2xl font-body py-1'>{user.displayName}</h2>
-                                            <p className='text-gray-700 pb-2'>{user.email}</p>
+                                            <img className='w-10 h-10 cursor-pointer mx-auto rounded-full' src={user?.photoURL} alt={user?.displayName} />
+                                            <h2 className='text-2xl font-body py-1'>{user?.displayName}</h2>
+                                            <p className='text-gray-700 pb-2'>{user?.email}</p>
                                             <button className='bg-green-700 py-2 px-3 w-full rounded-md text-white font-bold' onClick={handleLogout}>Logout</button>
                                         </div>
                                     }
@@ -78,6 +76,7 @@ const Layout = ({ children }) => {
 
                     {/* Page content here */}
                     {children}
+                    {/* <Outlet /> */}
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -93,9 +92,9 @@ const Layout = ({ children }) => {
 
                         {/* my profile */}
                         {user && <div className='bg-green-200 py-4 px-3 rounded-md text-center'>
-                            <img className='w-10 h-10 cursor-pointer mx-auto rounded-full' src={user.photoURL} alt={user.displayName} />
-                            <h2 className='text-2xl font-body py-1'>{user.displayName}</h2>
-                            <p className='text-gray-700 pb-2'>{user.email}</p>
+                            <img className='w-10 h-10 cursor-pointer mx-auto rounded-full' src={user?.photoURL} alt={user?.displayName} />
+                            <h2 className='text-2xl font-body py-1'>{user?.displayName}</h2>
+                            <p className='text-gray-700 pb-2'>{user?.email}</p>
                             <button className='bg-green-700 py-2 px-3 w-full rounded-md text-white font-bold' onClick={handleLogout}>Logout</button>
 
                         </div>
