@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const MyPostedSingleJob = ({job}) => {
+const MyPostedSingleJob = ({job,handleDelete}) => {
     const {_id,category,deadline,description,email,j_title,max_price,min_price} = job;
     return (
         <div>
@@ -18,7 +18,7 @@ const MyPostedSingleJob = ({job}) => {
                     </div>
                     <div className="card-actions justify-end">
                         <Link to={`/update/${_id}`} ><div className="badge badge-outline">Update</div></Link>
-                        <div className="badge badge-outline">Delete</div>
+                        <div onClick={()=> handleDelete(_id)} className="badge cursor-pointer badge-outline">Delete</div>
                     </div>
                 </div>
             </div>
