@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
     const links = <>
 
         <li><NavLink to="/" className={({ isActive }) => isActive ? "text-green-400 text-center font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Home </NavLink></li>
-        <li><NavLink to="/add-job" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Add job </NavLink></li>
+        <li><NavLink to="/add-jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Add job </NavLink></li>
         <li><NavLink to="/my-posted-jobs" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My posted jobs </NavLink></li>
         <li><NavLink to="/my-bits" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > My Bids </NavLink></li>
         <li><NavLink to="/bid-requests" className={({ isActive }) => isActive ? "text-green-400 font-bold py-1 px-2 rounded-md text-md " : "font-medium"} > Bid Requests </NavLink></li>
