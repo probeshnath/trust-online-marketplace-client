@@ -1,36 +1,46 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { NavLink, useLoaderData } from 'react-router-dom'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import Job from './Job'
 
 const BrowseJobsByCategory = () => {
+    const allJobs = useLoaderData();
+    const [jobs, setJobs] = useState(allJobs)
+    const [category, setCategory] = useState()
+
+
+    console.log("jobs", jobs)
+
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:5000/jobs?category=${category}`)
+    //     .then(res =>{
+    //         console.log(res.data)
+    //     })
+    //     .catch(error =>{
+    //         console.log(error)
+    //     })
+    // },[])
     return (
         <div className='bg-gray-200 py-5'>
 
-            <Tabs className=''>
+            <Tabs className='max-w-7xl mx-auto'>
                 <TabList className="flex justify-center py-5 gap-3">
-                    <Tab className="bg-orange-700 py-1 rounded-md px-2 text-white" >Mario</Tab>
-                    <Tab>Peach</Tab>
-                    <Tab>Yoshi</Tab>
-                    <Tab className="border border-orange-600 py-1 px-2 rounded-md cursor-pointer" >Toad</Tab>
+                    <Tab className="bg-orange-700 py-1 rounded-md px-2 text-white" >All</Tab>
+                    <Tab>Web Development</Tab>
+                    <Tab>Graphics Design</Tab>
+                    <Tab className="border border-orange-600 py-1 px-2 rounded-md cursor-pointer" >Digital Marketing</Tab>
                 </TabList>
 
                 <TabPanel>
-                    <p>
-                        <b>Mario</b> (<i>Japanese: マリオ Hepburn: Mario, [ma.ɾʲi.o]</i>) (<i>English:
-                            /ˈmɑːrioʊ/; Italian: [ˈmaːrjo]</i>) is a fictional character in the Mario video
-                        game franchise, owned by Nintendo and created by Japanese video game designer
-                        Shigeru Miyamoto. Serving as the company's mascot and the eponymous protagonist
-                        of the series, Mario has appeared in over 200 video games since his creation.
-                        Depicted as a short, pudgy, Italian plumber who resides in the Mushroom
-                        Kingdom, his adventures generally center upon rescuing Princess Peach from the
-                        Koopa villain Bowser. His younger brother and sidekick is Luigi.
-                    </p>
-                    <p>
-                        Source:{' '}
-                        <a href="https://en.wikipedia.org/wiki/Mario" target="_blank">
-                            Wikipedia
-                        </a>
-                    </p>
+                    <h2 className='py-5 text-center text-3xl font-bold text-green-700 '>All <span className='text-orange-600'>Jobs</span></h2>
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-3 px-3'>
+                        {
+                            jobs && jobs.map((job)=>(
+                                <Job key={job._id} job={job} />
+                            ))
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
                     <p>

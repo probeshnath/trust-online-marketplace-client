@@ -10,6 +10,7 @@ import MyPostedJobs from "../pages/MyPostedJobs";
 import MyBits from "../pages/MyBits";
 import PrivateRoute from "./PrivateRoute";
 import MyPostJobUpdate from "../pages/MyPostJobUpdate";
+import JobDetails from "../pages/JobDetails";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       children: [
         {
           index: true,
-          element: <Home />
+          element: <Home />,
+          loader: ()=> fetch(`http://localhost:5000/jobs`)
         },
         {
           path: "/login",
@@ -45,6 +47,11 @@ const router = createBrowserRouter([
         {
           path:"/update/:id",
           element: <PrivateRoute> <MyPostJobUpdate /> </PrivateRoute> ,
+          loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+        },
+        {
+          path:"/jobs/:id",
+          element: <PrivateRoute> <JobDetails /> </PrivateRoute> ,
           loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
         },
       ]
