@@ -46,7 +46,7 @@ const BidRequests = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bidrequests?email=${user.email}`)
+    axios.get(`http://localhost:5000/bidrequests?email=${user.email}`,{withCredentials:true})
       .then(res => {
         console.log(res.data)
         setBidRequests(res.data)
