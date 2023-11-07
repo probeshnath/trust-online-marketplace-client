@@ -44,7 +44,7 @@ const MyBids = () => {
                     <td>{bid.job_title}</td>
                     <td>{bid.buyer_email}</td>
                     <td>{bid.deadline}</td>
-                    <td>pending</td>
+                    <td>{bid.job_Status}</td>
                     <td>Compelte</td>
                     {/* <td>Blue</td> */}
                   </tr>

@@ -26,14 +26,15 @@ const JobDetails = () => {
             seller_email,
             buyer_email,
             job_title: job.j_title,
-            description: job.description
+            description: job.description,
+            job_Status: "Pending"
         }
         // console.log(bidProject)
 
         axios.post("http://localhost:5000/bids",bidProject)
         .then(res =>{
             console.log(res.data)
-            if(res.data.insertedId){
+            if(res?.data?.insertedId){
                 toast.success("Place Your Bid Successfully")
                 navigate("/mybids")
             }
@@ -45,7 +46,7 @@ const JobDetails = () => {
 
     }
 
-    if (job.email === user.email) {
+    if (job?.email === user?.email) {
         setShow(true)
     }
 
