@@ -11,7 +11,7 @@ const MyBids = () => {
    // complete task
    const handleCompleteJobRequest = (id) => {
     // console.log("this is id:",id)
-    let job_Status = { job_Status: "Complete" };
+    let job_Status = { job_Status: "Complete",job_progress: 100 };
     axios.put(`http://localhost:5000/bid/update/${id}`, job_Status)
       .then(res => {
         console.log(res.data)
@@ -66,7 +66,7 @@ const MyBids = () => {
                     <td>{bid.buyer_email}</td>
                     <td>{bid.deadline}</td>
                     <td>{bid.job_Status}</td>
-                    <td><button className={`${(bid.job_Status !== "Pending" && bid.job_Status !== "Complete") ? "bg-green-600 rounded-md py-1 px-2 text-white " : "bg-gray-500 rounded-md py-1 px-2 text-white"}`} disabled={(bid.job_Status === "Pending" || bid.job_Status === "Complete") ? true : false} onClick={() => handleCompleteJobRequest(bid._id)}>Compelte</button></td>
+                    <td><button className={`${(bid.job_Status !== "Pending" && bid.job_Status !== "Complete") ? "bg-green-600 rounded-md py-1 px-2 text-white " : "bg-gray-500 rounded-md py-1 px-2 text-white"}`} disabled={(bid.job_Status === "Pending" || bid.job_Status === "Complete" || bid.job_Status === "Canceled") ? true : false} onClick={() => handleCompleteJobRequest(bid._id)}>Complete</button></td>
                     {/* <td>Blue</td> */}
                   </tr>
                 ))

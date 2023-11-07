@@ -10,21 +10,11 @@ const BidRequests = () => {
   const { user } = useContext(AuthContext)
   console.log(user.email)
 
-  useEffect(() => {
-    axios.get(`http://localhost:5000/bidrequests?email=${user.email}`)
-      .then(res => {
-        console.log(res.data)
-        setBidRequests(res.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, []);
 
   // accept job
   const handleAcceptJobRequest = (id) => {
     // console.log("this is id:",id)
-    let job_Status = { job_Status: "Progress" };
+    let job_Status = { job_Status: "Progress",job_progress: 50 };
     axios.put(`http://localhost:5000/bid/update/${id}`, job_Status)
       .then(res => {
         console.log(res.data)
@@ -37,7 +27,7 @@ const BidRequests = () => {
       })
   }
 
-  // accept job
+  // reject job
   const handleRejectJobRequest = (id) => {
     // console.log("this is id:",id)
     let job_Status = { job_Status: "Canceled" };
@@ -52,6 +42,21 @@ const BidRequests = () => {
         console.log(error)
       })
   }
+
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/bidrequests?email=${user.email}`)
+      .then(res => {
+        console.log(res.data)
+        setBidRequests(res.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, []);
+
+  
 
 
   return (
@@ -83,18 +88,25 @@ const BidRequests = () => {
                     <td>{bid.deadline}</td>
                     <td>{bid.price}</td>
                     <td>{bid.job_Status}</td>
-
+                    {
+                      bid.job_Status !== "Pending" ? <td>
+                      <ProgressBar
+                        width={80}
+                        percent={bid.job_progress || 0}
+                        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+                      />
+                    </td> : 
+                    // (bid.job_Status !== "Canceled" ? 
                     <td>
                       <button onClick={() => handleAcceptJobRequest(bid._id)} className='bg-green-600 rounded-md text-white mr-2 py-1 px-2'>Accept</button>
                       <button onClick={() => handleRejectJobRequest(bid._id)} className='bg-red-600 rounded-md text-white py-1 px-2'>Reject</button>
                     </td>
-                    <td>
-                      <ProgressBar
-                        width={80}
-                        percent={100}
-                        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
-                      />
-                    </td>
+                  //   {/* :
+                  //   <button className='bg-red-600 rounded-md text-white py-1 px-2'>Canceled</button>)
+                    
+                  // // */}
+                } 
+                    
                   </tr>
                 ))
               }

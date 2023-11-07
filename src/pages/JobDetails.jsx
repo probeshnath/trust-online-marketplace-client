@@ -27,7 +27,8 @@ const JobDetails = () => {
             buyer_email,
             job_title: job.j_title,
             description: job.description,
-            job_Status: "Pending"
+            job_Status: "Pending",
+            job_progress: 0,
         }
         // console.log(bidProject)
 
