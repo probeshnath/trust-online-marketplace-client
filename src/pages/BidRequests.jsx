@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const BidRequests = () => {
     const [bidRequests, setBidRequests] = useState()
@@ -16,10 +17,23 @@ const BidRequests = () => {
         .catch(error => {
           console.log(error)
         })
-    }, [])
+    }, []);
 
     // accept job
-    const handleAcceptJobRequest = () =>{}
+    const handleAcceptJobRequest = (id) =>{
+        // console.log("this is id:",id)
+        let job_Status = {job_Status : "Progress"};
+        axios.put(`http://localhost:5000/bid/update/${id}`,job_Status)
+        .then(res =>{
+          console.log(res.data)
+          if(res.data.modifiedCount > 0){
+            toast.success("Accept the Bid")
+          }
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+    }
 
      // accept job
      const handleRejectJobRequest = (id) =>{
@@ -28,6 +42,9 @@ const BidRequests = () => {
       axios.put(`http://localhost:5000/bid/update/${id}`,job_Status)
       .then(res =>{
         console.log(res.data)
+        if(res.data.modifiedCount > 0){
+          toast.success("Reject the Bid")
+        }
       })
       .catch(error =>{
         console.log(error)
