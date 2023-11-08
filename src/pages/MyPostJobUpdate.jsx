@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
 
 const MyPostJobUpdate = () => {
 
     const navigate = useNavigate()
-    
+
     const job = useLoaderData();
     // console.log(job)
 
 
-    const updateJobs = (e) =>{
+    const updateJobs = (e) => {
         e.preventDefault();
 
         const form = e.target;
@@ -35,18 +36,18 @@ const MyPostJobUpdate = () => {
         }
         console.log(job)
 
-        axios.put(`http://localhost:5000/jobs/${job._id}`,UpdateJob)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                toast.success("Job Updated Successfully")
-                navigate("/mypostedjobs")
-            }
-        })
-        .catch(error =>{
-            console.log(error)
-            toast.error(error.message)
-        })
+        axios.put(`http://localhost:5000/jobs/${job._id}`, UpdateJob)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    toast.success("Job Updated Successfully")
+                    navigate("/mypostedjobs")
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error(error.message)
+            })
 
     }
 
@@ -54,6 +55,9 @@ const MyPostJobUpdate = () => {
 
     return (
         <div className='max-w-7xl mx-auto py-10'>
+            <Helmet>
+                <title>Trust || Update Job</title>
+            </Helmet>
             <h2 className='text-green-600 font-bold text-center text-3xl pb-3'>Update Job</h2>
             <form onSubmit={updateJobs} className='flex gap-3 flex-col w-1/3 mx-auto '>
                 <input type="Email" placeholder='Email' name='email' defaultValue={job.email} readOnly className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' />

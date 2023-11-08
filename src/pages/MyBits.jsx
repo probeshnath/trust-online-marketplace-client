@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet-async'
 
 const MyBids = () => {
   const [bids, setBids] = useState()
@@ -41,6 +42,9 @@ const MyBids = () => {
 
   return (
     <div className='max-w-7xl mx-auto py-5'>
+      <Helmet>
+        <title>Trust || My Bids</title>
+      </Helmet>
       <h2 className='pt-2 pb-4 text-center text-3xl font-bold text-green-800'>My Bits</h2>
       <div>
         <div className="overflow-x-auto">

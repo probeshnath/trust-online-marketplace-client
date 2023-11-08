@@ -3,11 +3,12 @@ import { useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const JobDetails = () => {
     const job = useLoaderData();
     const [show, setShow] = useState(false)
-    // console.log(job)
+    console.log("my job", job)
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -32,18 +33,18 @@ const JobDetails = () => {
         }
         // console.log(bidProject)
 
-        axios.post("http://localhost:5000/bids",bidProject)
-        .then(res =>{
-            console.log(res.data)
-            if(res?.data?.insertedId){
-                toast.success("Place Your Bid Successfully")
-                navigate("/mybids")
-            }
-        })
-        .catch(error =>{
-            console.log(error)
-            toast.error(error)
-        })
+        axios.post("http://localhost:5000/bids", bidProject)
+            .then(res => {
+                console.log(res.data)
+                if (res?.data?.insertedId) {
+                    toast.success("Place Your Bid Successfully")
+                    navigate("/mybids")
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error(error)
+            })
 
     }
 
@@ -53,6 +54,9 @@ const JobDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Trust || {job?.j_title}</title>
+            </Helmet>
             <div className='max-w-7xl flex h-screen justify-center items-center mx-auto'>
                 <div className='p-10 shadow-xl'>
                     <h2 className='text-2xl font-bold'>Job Details</h2>

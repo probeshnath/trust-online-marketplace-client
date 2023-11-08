@@ -13,9 +13,10 @@ const BrowseJobsByCategory = () => {
     console.log("jobs", jobs)
 
     // useEffect(()=>{
-    //     axios.get(`http://localhost:5000/jobs?category=${category}`)
+    //     axios.get(`http://localhost:5000/jobs`,)
     //     .then(res =>{
     //         console.log(res.data)
+    //         setJobs(res.data)
     //     })
     //     .catch(error =>{
     //         console.log(error)

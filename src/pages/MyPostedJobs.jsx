@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
 import MyPostedSingleJob from '../components/MyPostedSingleJob'
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet-async'
 
 const MyPostedJobs = () => {
     const [myPostedJobs, setMyPostedJobs] = useState(null)
@@ -11,7 +12,7 @@ const MyPostedJobs = () => {
     // console.log("myPostedJobs",myPostedJobs)
     
    useEffect(()=>{
-    axios.get(`http://localhost:5000/jobs?email=${email}`)
+    axios.get(`http://localhost:5000/jobs?email=${email}`,{withCredentials:true})
     .then(res =>{
         // console.log(res.data)
         setMyPostedJobs(res.data)
@@ -40,6 +41,9 @@ const MyPostedJobs = () => {
 
   return (
     <div className='bg-red-100'>
+        <Helmet>
+        <title>Trust || My Posted Jobs</title>
+      </Helmet>
         <div className="max-w-7xl py-10 mx-auto">
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 px-2'>
                 {

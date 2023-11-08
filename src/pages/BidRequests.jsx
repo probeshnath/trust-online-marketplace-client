@@ -4,6 +4,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import "react-step-progress-bar/styles.css";
 import { ProgressBar } from 'react-step-progress-bar'
+import { Helmet } from 'react-helmet-async';
 
 const BidRequests = () => {
   const [bidRequests, setBidRequests] = useState()
@@ -61,6 +62,9 @@ const BidRequests = () => {
 
   return (
     <div className='max-w-7xl mx-auto py-5'>
+      <Helmet>
+        <title>Trust || My Bid Requests</title>
+      </Helmet>
       <h2 className='pt-2 pb-4 text-center text-3xl font-bold text-green-800'>My Bits</h2>
       <div>
         <div className="overflow-x-auto">
