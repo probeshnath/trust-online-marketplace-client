@@ -48,11 +48,11 @@ const AddJobs = () => {
 
     }
     return (
-        <div className='max-w-7xl mx-auto flex justify-center items-center h-screen'>
+        <div className='max-w-7xl mx-auto flex justify-center items-center '>
             <Helmet>
                 <title>Trust || Add New Job</title>
             </Helmet>
-            <div className='shadow-lg md:w-1/3'>
+            <div className='shadow-lg w-full md:w-1/3'>
                 <div className='py-10 px-3'>
                     {/* <img src="" alt="" /> */}
                     <h3 className='text-3xl text-center pb-5 font-bold '>  <span className='text-green-600 capitalize'>{user?.displayName}</span>,<br /> <span className='text-orange-500'>Create a New Job</span></h3>

@@ -28,7 +28,7 @@ const MyBids = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bids?email=${user.email}`)
+    axios.get(`http://localhost:5000/bids?email=${user.email}`,{withCredentials:true})
       .then(res => {
         // console.log(res.data)
         setBids(res.data)
@@ -47,8 +47,8 @@ const MyBids = () => {
       </Helmet>
       <h2 className='pt-2 pb-4 text-center text-3xl font-bold text-green-800'>My Bits</h2>
       <div>
-        <div className="overflow-x-auto">
-          <table className="table table-xs">
+        <div className="">
+          <table className="table  overflow-x-scroll table-xs">
             <thead>
               <tr>
                 <th>Serial</th>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import GoogleLogin from '../components/GoogleLogin'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import { updateProfile } from 'firebase/auth'
 import toast from 'react-hot-toast'
@@ -9,6 +9,7 @@ const Register = () => {
 
     const {register} = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -41,7 +42,7 @@ const Register = () => {
                     toast.success("User Updated Successfully")
 
             })
-            navigate('/')
+            navigate(location?.state ? location?.state : "/")
         })
         .catch((error)=>{
             console.log(error)

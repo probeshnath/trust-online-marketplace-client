@@ -1,16 +1,32 @@
-import React, { useContext, useState } from 'react'
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 
 const JobDetails = () => {
-    const job = useLoaderData();
+    // const loadedJob = useLoaderData();
+    const [job, setJob]= useState({})
     const [show, setShow] = useState(false)
-    console.log("my job", job)
+    // console.log("my job", job)
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+
+    const {id} = useParams();
+    // console.log("first id",id)
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/jobs/${id}`)
+        .then(res => {
+            console.log("this is data",res.data)
+            setJob(res.data)
+        })
+        .catch(error =>{
+            console.log("error",error)
+        })
+    },[])
 
     const handleBit = (e) => {
         e.preventDefault()
@@ -55,17 +71,17 @@ const JobDetails = () => {
     return (
         <div>
             <Helmet>
-                <title>Trust || {job?.j_title}</title>
+                <title>{`Trust || ${job?.j_title}`}</title>
             </Helmet>
-            <div className='max-w-7xl flex h-screen justify-center items-center mx-auto'>
+            <div className='max-w-7xl flex w-full md:w-2/3 lg:w-1/2 h-screen justify-center items-center mx-auto'>
                 <div className='p-10 shadow-xl'>
                     <h2 className='text-2xl font-bold'>Job Details</h2>
                     <div>
-                        <h1 className='text-blue-800 pt-3 text-lg font-bold'>{job.j_title}</h1>
-                        <p className='text-gray-500'>{job.email}</p>
-                        <p>${job.min_price} - ${job.max_price}</p>
-                        <p>{job.deadline}</p>
-                        <p className='text-gray-500 py-1'>{job.description}</p>
+                        <h1 className='text-blue-800 pt-3 text-lg font-bold'>{job?.j_title}</h1>
+                        <p className='text-gray-500'>{job?.email}</p>
+                        <p>${job?.min_price} - ${job?.max_price}</p>
+                        <p>{job?.deadline}</p>
+                        <p className='text-gray-500 py-1'>{job?.description}</p>
                         {/* <button className=''>Place Your Bit</button> */}
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         {
@@ -102,7 +118,7 @@ const JobDetails = () => {
                                             <label className="label">
                                                 <span className="label-text">Buyer Email</span>
                                             </label>
-                                            <input type="email" name='buyer_email' defaultValue={job.email} readOnly className="input input-bordered outline-none w-full " />
+                                            <input type="email" name='buyer_email' defaultValue={job?.email} readOnly className="input input-bordered outline-none w-full " />
                                         </div>
 
 

@@ -54,12 +54,12 @@ const MyPostJobUpdate = () => {
 
 
     return (
-        <div className='max-w-7xl mx-auto py-10'>
+        <div className='max-w-7xl px-3 mx-auto py-10'>
             <Helmet>
                 <title>Trust || Update Job</title>
             </Helmet>
             <h2 className='text-green-600 font-bold text-center text-3xl pb-3'>Update Job</h2>
-            <form onSubmit={updateJobs} className='flex gap-3 flex-col w-1/3 mx-auto '>
+            <form onSubmit={updateJobs} className='flex gap-3 flex-col w-full md:w-1/2 lg:w-1/3 mx-auto '>
                 <input type="Email" placeholder='Email' name='email' defaultValue={job.email} readOnly className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' />
                 <input type="text" placeholder='Job Title' defaultValue={job.j_title} name='j_title' className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' required />
                 <input type="date" placeholder='Deadline' defaultValue={job.deadline} name='deadline' className='bg-gray-200 text-gray-700 p-2 w-full outline-none rounded-md' required />

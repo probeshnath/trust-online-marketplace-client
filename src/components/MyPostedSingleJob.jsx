@@ -14,7 +14,7 @@ const MyPostedSingleJob = ({ job, handleDelete }) => {
                         {j_title}
                     </h2>
                     <div className="badge badge-secondary">{category}</div>
-                    <p>{description}</p>
+                    <p>{description.slice(0,20)}...</p>
                     <div>
                         <p>{deadline}</p>
                         <p>${min_price}-${max_price}</p>
@@ -25,7 +25,7 @@ const MyPostedSingleJob = ({ job, handleDelete }) => {
                         {/* <div onClick={() => handleDelete(_id)} className="badge cursor-pointer badge-outline">Delete</div> */}
 
                         {/* The button to open modal */}
-                        <label htmlFor="my_modal_6" className="btn cursor-pointer ">Delete</label>
+                        <label htmlFor="my_modal_6" className="badge badge-outline cursor-pointer ">Delete</label>
 
                         {/* Put this part before </body> tag */}
                         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
