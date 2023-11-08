@@ -16,7 +16,7 @@ const BidRequests = () => {
   const handleAcceptJobRequest = (id) => {
     // console.log("this is id:",id)
     let job_Status = { job_Status: "Progress",job_progress: 50 };
-    axios.put(`http://localhost:5000/bid/update/${id}`, job_Status)
+    axios.put(`https://market-place-server-mern.vercel.app/bid/update/${id}`, job_Status)
       .then(res => {
         console.log(res.data)
         if (res.data.modifiedCount > 0) {
@@ -32,7 +32,7 @@ const BidRequests = () => {
   const handleRejectJobRequest = (id) => {
     // console.log("this is id:",id)
     let job_Status = { job_Status: "Canceled" };
-    axios.put(`http://localhost:5000/bid/update/${id}`, job_Status)
+    axios.put(`https://market-place-server-mern.vercel.app/bid/update/${id}`, job_Status)
       .then(res => {
         console.log(res.data)
         if (res.data.modifiedCount > 0) {
@@ -47,7 +47,7 @@ const BidRequests = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bidrequests?email=${user.email}`,{withCredentials:true})
+    axios.get(`https://market-place-server-mern.vercel.app/bidrequests?email=${user.email}`,{withCredentials:true})
       .then(res => {
         console.log(res.data)
         setBidRequests(res.data)

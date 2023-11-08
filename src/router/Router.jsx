@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         {
           index: true,
           element: <Home />,
-          loader: ()=> fetch(`http://localhost:5000/jobs`)
+          loader: ()=> fetch(`https://market-place-server-mern.vercel.app/jobs`)
         },
         {
           path: "/login",
@@ -52,12 +52,12 @@ const router = createBrowserRouter([
         {
           path:"/update/:id",
           element: <PrivateRoute> <MyPostJobUpdate /> </PrivateRoute> ,
-          loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader: ({params})=> fetch(`https://market-place-server-mern.vercel.app/jobs/${params.id}`)
         },
         {
           path:"/jobs/:id",
           element: <PrivateRoute> <JobDetails /> </PrivateRoute> ,
-          // loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+          // loader: ({params})=> fetch(`https://market-place-server-mern.vercel.app/jobs/${params.id}`)
         },
       ]
     },

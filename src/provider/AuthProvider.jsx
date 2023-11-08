@@ -50,12 +50,12 @@ const AuthProvider = ({children}) => {
         const userEmail = {email : loggedUser}
 
         if(currentUser){
-          axios.post("http://localhost:5000/jwt",userEmail,{withCredentials:true})
+          axios.post("https://market-place-server-mern.vercel.app/jwt",userEmail,{withCredentials:true})
           .then(res =>{
             console.log(res.data)
           })
         }else{
-          axios.post("http://localhost:5000/logout",userEmail,{withCredentials:true})
+          axios.post("https://market-place-server-mern.vercel.app/logout",userEmail,{withCredentials:true})
           .then(res =>{
             console.log(res.data)
           })

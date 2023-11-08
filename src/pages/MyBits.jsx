@@ -13,7 +13,7 @@ const MyBids = () => {
    const handleCompleteJobRequest = (id) => {
     // console.log("this is id:",id)
     let job_Status = { job_Status: "Complete",job_progress: 100 };
-    axios.put(`http://localhost:5000/bid/update/${id}`, job_Status)
+    axios.put(`https://market-place-server-mern.vercel.app/bid/update/${id}`, job_Status)
       .then(res => {
         console.log(res.data)
         if (res.data.modifiedCount > 0) {
@@ -28,7 +28,7 @@ const MyBids = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bids?email=${user.email}`,{withCredentials:true})
+    axios.get(`https://market-place-server-mern.vercel.app/bids?email=${user.email}`,{withCredentials:true})
       .then(res => {
         // console.log(res.data)
         setBids(res.data)

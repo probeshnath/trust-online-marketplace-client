@@ -12,7 +12,7 @@ const MyPostedJobs = () => {
     // console.log("myPostedJobs",myPostedJobs)
     
    useEffect(()=>{
-    axios.get(`http://localhost:5000/jobs?email=${email}`,{withCredentials:true})
+    axios.get(`https://market-place-server-mern.vercel.app/jobs?email=${email}`,{withCredentials:true})
     .then(res =>{
         // console.log(res.data)
         setMyPostedJobs(res.data)
@@ -24,7 +24,7 @@ const MyPostedJobs = () => {
 
    const handleDelete = (_id) =>{
     console.log(_id)
-    axios.delete(`http://localhost:5000/jobs/${_id}`)
+    axios.delete(`https://market-place-server-mern.vercel.app/jobs/${_id}`)
     .then(res =>{
         console.log(res.data)
         if(res.data.deletedCount > 0){

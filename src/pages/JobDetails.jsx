@@ -18,7 +18,7 @@ const JobDetails = () => {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/jobs/${id}`)
+        axios.get(`https://market-place-server-mern.vercel.app/jobs/${id}`)
         .then(res => {
             console.log("this is data",res.data)
             setJob(res.data)
@@ -49,7 +49,7 @@ const JobDetails = () => {
         }
         // console.log(bidProject)
 
-        axios.post("http://localhost:5000/bids", bidProject)
+        axios.post("https://market-place-server-mern.vercel.app/bids", bidProject)
             .then(res => {
                 console.log(res.data)
                 if (res?.data?.insertedId) {

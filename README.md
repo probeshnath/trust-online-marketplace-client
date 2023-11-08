@@ -1,7 +1,7 @@
 
 ## Trust Online Marketplace
 
- - [Social Event Management (Live Link)](https://stackoverflow.com/questions/76677710/how-can-i-solve-the-error-internal-postcss-failed-to-load-when-running-npm-run-d)
+ - [Trast Online Marketplace (Live Link)](https://trust-mern-marketplace.web.app/)
  
 
 ## 5 feature of my website

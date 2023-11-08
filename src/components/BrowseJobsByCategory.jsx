@@ -31,7 +31,7 @@ const BrowseJobsByCategory = () => {
         // let cate = {category : category}
         // console.log("category",cate)
        if(category){
-        axios.get(`http://localhost:5000/jobs?category=${category}`,)
+        axios.get(`https://market-place-server-mern.vercel.app/jobs?category=${category}`,)
         .then(res =>{
             console.log("cate",res.data)
             setJobs(res.data)

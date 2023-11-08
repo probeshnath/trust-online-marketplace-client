@@ -33,7 +33,7 @@ const AddJobs = () => {
         }
         // console.log(job)
 
-        axios.post("http://localhost:5000/jobs", job, { withCredentials: true })
+        axios.post("https://market-place-server-mern.vercel.app/jobs", job, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
